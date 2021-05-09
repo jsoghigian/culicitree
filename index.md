@@ -5,6 +5,6 @@ feature_text:
 ---
 This is the future home of the Culicitree Project.
 
-<img align="center" src="https://raw.githubusercontent.com/jsoghigian/culicitree/gh-pages/images/mcc.tacted.tre.png" style="border:2px solid black;margin:5px 5px 5px 5px">
+<img align="center" src="https://raw.githubusercontent.com/jsoghigian/culicitree/gh-pages/images/mcc.tacted.tre.png" style="margin:5px 5px 5px 5px">
 
 
