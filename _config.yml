@@ -23,10 +23,10 @@ plugins:
 # Site settings
 url: 'https://mydomain.com'
 baseurl: ''
-title: 'My website'
-description: 'This is my new website'
+title: 'The Culicitree Project'
+description: 'The web presence of the Culicitree Project'
 permalink: pretty
-logo: "https://www.gravatar.com/avatar/6c0377abcf4da91cdd35dea4554b2a4c?s=52"
+logo: "https://raw.githubusercontent.com/jsoghigian/culicitree/gh-pages/images/culicitree_symbol.png"
 
 # Pagination
 paginate: 5
