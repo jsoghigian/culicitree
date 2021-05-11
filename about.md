@@ -1,5 +1,5 @@
 ---
-title: About this website
+title: About Culicitree
 ---
 
-I'm not sure yet what this website is about, but I'm sure I'll work it out soon.
+Culicitree is an NSF-funded, international collaborative effort to bring phylogenomic methods to bear on the Culicidae.  
