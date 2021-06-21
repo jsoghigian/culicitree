@@ -2,4 +2,4 @@
 title: Resources
 ---
 
-In addition to phylogenetic trees, Culicitree is helping to renovate Vector Map, and provide extensive databases on mosquito ecology.
+At present, Culicitree is preparing its first data release, which will include phylogenetic trees and ecological associations.  These resources will be stored here when they are released.
