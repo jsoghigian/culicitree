@@ -2,7 +2,7 @@
 title: Culicitree Publications
 ---
 
-The publications below were authored by Culicitree team mmembers and are related to mosquito evolution, genomics, or systematics.  
+The publications below were authored by Culicitree team members and are related to mosquito evolution, genomics, or systematics.  
   
 **2021**  
 Justi, S., Soghigian, J., Pecor, D.B., Caicedo-Quiroga, L., Rutvisuttinunt, W., Li, T., Stevens, L., Dorn, P.L., 
