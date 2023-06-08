@@ -1,0 +1,117 @@
+#This script is designed to convert output from OMA to a format that can be used as input for the program Orthograph.
+#We need a file called OG_to_keep that has a list of orthologous group numbers (e.g. just a text file).  I test the pipeline with just 1 or 2 OG numbers to start as the time it takes goes up a ton with more orthologs.
+#This expects the orthogroups to be in a directory called OrthologousGroupsFasta in the current directory.  Within this directory should be orthogroups in the format of OGNumber.fa .
+#add the OG file that contains the IDs we want to this directory!
+mkdir orthogroups
+#now we will copy the OGs..
+cd orthogroups
+
+for file in `cat ../OG_to_keep`;
+do
+cp ../OrthologousGroupsFasta/${file}.fa .
+done
+#confirm we have as many as we expect:
+find . -name '*.fa' | wc -l
+
+#Now to process these we need to do a little bit of work.  This is because orthograph has specific requirements for
+#building its catalog.
+#So we are going to split each file into constituent files such that we have one folder per taxon, with one file per
+#orthogroup.  This uses two python scripts that are made for handling OMA output/
+cd ..
+mkdir taxa
+cd orthogroups
+for file in `find . -name '*.fa'`;
+do
+  orthogroup=$(basename ${file} .fa)
+  sed 's/\./_/g' $file > tmp1.fa
+  python ~/path/to/oma_to_orthograph/fasta_headernames_from_OMA_IDs.py tmp1.fa > ${file}.tmp
+  rm tmp1.fa
+  mkdir $orthogroup
+  cp ${file}.tmp ${orthogroup}/
+  cd $orthogroup
+  python ~/path/to/oma_to_orthograph/split.py -f ${file}.tmp -t faa
+  rm ${file}.tmp
+  for ortho_file in `ls *.faa`;
+  do
+    taxon=`echo ${ortho_file} | awk -F"|" '{print $1}'`
+    mkdir ../../taxa/${taxon} 2> /dev/null
+    cp $ortho_file ../../taxa/$taxon/${orthogroup}.faa
+  done
+  cd ..
+  rm ${file}.tmp
+done
+
+#This can take a while!  Be patient, hah hah.
+#The result is folders containing single ortholog sequences.
+
+#Moving on to actual orthograph Prep...
+#per taxa we will build two files: one, a tsv in the format of:
+#ORTHOLOGID GENEID TAXANAME
+#and the next, a fasta file, where the header is just the GENEID.
+cd ..
+
+#our fasta files are one per ortholog, e.g:
+#OG2.faa
+#>Culex-quinquefasciatus-Johannesburg_PEPTIDES_CpipJ2_4|CPIJ002358
+#MDEKINLPCTPLRAIGEEGKPATIVDFQESYSAVEDQTGYISVQVEGNPAPTWKFFKNITELVDGGRYKHHTDGESNTITLCIRKVKPNDEGKYR...
+cd taxa
+for taxon in `ls -d */`;
+do
+cd $taxon
+for file in `find . -name '*.faa'`;
+do
+  orthogroup=$(basename ${file} .faa)
+  geneID=`grep ">" $file | awk 'sub(/^>/, "")' | awk -F"|" '{print $2}'`
+  taxID=`grep ">" $file | awk 'sub(/^>/, "")' | awk -F"|" '{print $1}' | awk 'sub(/_PEPTIDES/, "")'`
+  printf ${orthogroup}'\t'${geneID}'\t'${taxID}'\n' >> ../cog_${taxID}.log
+done
+cd ..
+done
+
+for file in `find . -name '*.faa'`;
+do
+  orthogroup=$(basename ${file} .faa)
+  geneID=`grep ">" $file | awk 'sub(/^>/, "")' | awk -F"|" '{print $2}'`
+  taxID=`grep ">" $file | awk 'sub(/^>/, "")' | awk -F"|" '{print $1}' | awk 'sub(/_PEPTIDES/, "")'`
+  printf ${orthogroup}'\t'${geneID}'\t'${taxID}'\n' >> ../cog_${taxID}.log
+done
+
+#next let's combine the fasta files and rename them such that it is just the gene ID as the fasta header:
+#while still in taxa,
+for taxon in `ls -d */`;
+do
+taxID=$(basename $taxon | awk 'sub(/_PEPTIDES/, "")')
+cd $taxon
+for file in `find . -name '*.faa'`; do (cat "${file}";echo)>>temp.faa;done
+python ~/path/to/oma_to_orthograph/simplify_OMA_headers.py temp.faa > ../${taxID}.faa
+rm temp.faa
+cd ..
+done
+
+
+for file in *.faa;
+do
+taxName=$(basename $file .faa)
+grep ">" $file | awk 'sub(/^>/, "")' > ${taxName}.orthos
+orig=$(grep -c ">" $file)
+sed 's/\./_/g' ${taxName}.fna > tmp1.fna
+python ~/path/to/oma_to_orthograph/fasta_header_simplify.py tmp1.fna > ${taxName}_simplify
+python ~/path/to/oma_to_orthograph/fasta_subset_to_set.py ${taxName}_simplify ${taxName}.orthos ${taxName}_orthos.fna
+new=$(grep -c ">" ${taxName}_orthos.fna)
+echo $taxName $orig $new
+rm tmp1.fna
+rm ${taxName}_simplify
+done
+
+#and now move the CoG, faa, and ortho_fna files to a dir for set construction..
+cp cog_* ../
+cp *.faa ../
+cp *_orthos.fna ../
+
+#in the dir, make the sqlite directory:
+cd ../
+#change config files as needed.
+orthograph-manager --configfile orthograph.conf --create
+
+orthograph-manager --configfile orthograph.conf --load-ogs-peptide Anopheles-gambiae-PEST_AgamP4_11.faa
+orthograph-manager --configfile orthograph.conf --load-ogs-nucleotide Anopheles-gambiae-PEST_AgamP4_11_orthos.fna
