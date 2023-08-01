@@ -4,4 +4,6 @@ oma_to_orthograph.txt - A description of loops and scripts necessary to adjust O
 
 align_and_trim.bash - A script to align and trim putative orthologs with MAFFT and Trimal.  Also requires the python script fasta_subset.py.
 
+summarize_aa.bash - Create concatenated alignments from the output of align_and_trim.bash.
+
 outlier_detection.R - The R commands used to identify outlier sequences based on our branch-length method.
