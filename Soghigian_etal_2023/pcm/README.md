@@ -1,1 +1,1 @@
-This archive contains the phylogenetic comparative methods we completed in R. Included in the compressed archive are data files as well as code files used to run analyses.
+This archive contains the phylogenetic comparative methods we completed in R. Included in the compressed archive are data files as well as code files used to run analyses.  For a version of the archive including completed analyses, see our Figshare DOI: 10.6084/m9.figshare.23826144
