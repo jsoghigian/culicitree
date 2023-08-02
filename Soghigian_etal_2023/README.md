@@ -1,3 +1,1 @@
-Supplemental files, data, and scripts for our paper on mosquito phylogeny and bloodhost associations will be stored here for publication.
-
-Note: At present, our manuscript is in review and not all files are be available for download.
+Scripts used in the publication Soghigian et al. 2023 "Phylogenomics reveals the history of host use in mosquitoes" are stored here. Most input data files are as well, but others are stored on Figshare due to their size, DOI: 10.6084/m9.figshare.23826144
