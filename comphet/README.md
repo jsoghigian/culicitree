@@ -5,14 +5,14 @@ by John Soghigian, Gen Morinaga, and Huiqing Yeo
 Recently, colleagues and I were interested in investigating patterns in multiple sequence alignments that resulted in disagreement between amino acids and nucleotide position three, which resulted in topological differences based primarily on the position of the root. For the particular organismal group of interest, mosquitoes, the two topologies were one in which the two mosquito subfamilies were monophyletic and the root was on the branch between them, or another in which the root was within one of the subfamilies (The Culicinae), resulting in the subfamily being non-monophyletic, a pattern described in Pierce et al. 2025. Based on a range of past evidence, we had strong a priori assumptions about which of these was likely to be the case. We felt that it was likely that compositional heterogeneity, a well-known problem in maximum likelihood phylogenetic inference, could create such a conflict. We decided to delve, in detail, into the causes - and their consequences - of long branches and compositional heterogeineity.
 
 Table of Contents
-[Datasets](#datasets) 
-[Phylogenetics of Mosquitoes from amino acids and nucleotides](#phylogenetic-relationships-in-mosquitoes-from-amino-acids-and-nt3-alone) 
+[Datasets](#datasets)  
+[Phylogenetics of Mosquitoes from amino acids and nucleotides](#phylogenetic-relationships-in-mosquitoes-from-amino-acids-and-nt3-alone)  
 [Assessing Support for Conflicting Topologies](#assessing-support-for-conflicting-topologies)  
 [Inspecting Alignments](#inspecting-alignments)  
-[Ameloirating Compositional Heterogeneity](#ameloirating-compositional-heterogeneity) 
-[Choice of Outgroups](#choice-of-outgroups) 
-[Concluding Remarks](#concluding-remarks) 
-[Changelog](#changelog) 
+[Ameloirating Compositional Heterogeneity](#ameloirating-compositional-heterogeneity)  
+[Choice of Outgroups](#choice-of-outgroups)  
+[Concluding Remarks](#concluding-remarks)  
+[Changelog](#changelog)  
 
 
 # Datasets
