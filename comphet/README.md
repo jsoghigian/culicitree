@@ -5,14 +5,14 @@ by John Soghigian, Gen Morinaga, and Huiqing Yeo
 Recently, colleagues and I were interested in investigating patterns in multiple sequence alignments that resulted in disagreement between amino acids and nucleotide position three, which resulted in topological differences based primarily on the position of the root. For the particular organismal group of interest, mosquitoes, the two topologies were one in which the two mosquito subfamilies were monophyletic and the root was on the branch between them, or another in which the root was within one of the subfamilies (The Culicinae), resulting in the subfamily being non-monophyletic, a pattern described in Pierce et al. 2025. Based on a range of past evidence, we had strong a priori assumptions about which of these was likely to be the case. We felt that it was likely that compositional heterogeneity, a well-known problem in maximum likelihood phylogenetic inference, could create such a conflict. We decided to delve, in detail, into the causes - and their consequences - of long branches and compositional heterogeineity.
 
 Table of Contents
-[Datasets](#datasets)
-[Phylogenetics of Mosquitoes from amino acids and nucleotides](#phylogenetic-relationships-in-mosquitoes-from-amino-acids-and-nt3-alone)
-[Assessing Support for Conflicting Topologies](#assessing-support-for-conflicting-topologies)
-[Inspecting Alignments](#inspecting-alignments)
-[Ameloirating Compositional Heterogeneity](#ameloirating-compositional-heterogeneity)
-[Choice of Outgroups](#choice-of-outgroups)
-[Concluding Remarks](#concluding-remarks)
-[Changelog](#changelog)
+[Datasets](#datasets) 
+[Phylogenetics of Mosquitoes from amino acids and nucleotides](#phylogenetic-relationships-in-mosquitoes-from-amino-acids-and-nt3-alone) 
+[Assessing Support for Conflicting Topologies](#assessing-support-for-conflicting-topologies)  
+[Inspecting Alignments](#inspecting-alignments)  
+[Ameloirating Compositional Heterogeneity](#ameloirating-compositional-heterogeneity) 
+[Choice of Outgroups](#choice-of-outgroups) 
+[Concluding Remarks](#concluding-remarks) 
+[Changelog](#changelog) 
 
 
 # Datasets
@@ -24,7 +24,7 @@ Here, we analyze three datasets from Soghigian et al. 2023, with a minor excepti
 # Phylogenetic Relationships in Mosquitoes, from Amino Acids and NT3 Alone
 Datasets A and C are protein-coding, which enables us to analyze amino acids as well as any codon position jointly or separately. Previous analyses on these datasets indicate a phylogeny similar to below, in which the two subfamilies were monophyletic. These analyses were based on amino acids and codon position 2 or 1 and 2 together (hereafter NT1 or NT1/2), and resolved the same phylogeny. Note unsampled tribes indicated by dashed lines.
 
-![CulicidaePhylogeny](https://github.com/jsoghigian/culicitree/blob/main/comphet/images/fig1.png?raw=true)
+![CulicidaePhylogeny](https://github.com/jsoghigian/culicitree/blob/main/comphet/images/fig1.png?raw=true) 
 The phylogeny of the Culicidae based on genetic (amino acids, codon positions 1 and 2) evidence, with unsampled tribes shown as dotted lines; this phylogeny is broadly consistent with morphological evidence. See Soghigian et al. 2026 for more details on this figure.
 
 Codon position 3 (hereafter NT3) had been excluded due to evidence of significant saturation (See Soghigian et al. 2023 supplemental). However, a recent paper argued that NT3 was a more reliable phylogenetic marker than amino acids or NT1/2. Although virtually all evidence outside of codon position 3 and UCEs support two monophyletic subfamilies, a recent publication proposed a topology based predominantly on signal from NT3. We can mimic a similar signal in our datasets A and C by analyzing position 3:
@@ -39,7 +39,7 @@ DNA, OG10_3 = 3-13491\3
 ```
 If you were to delete those first two lines, IQ-Tree would analze only NT3.
 Whether using ModelFinder (MFP) or, say, GTR+F+I+R, the topology reconstructed from NT3 alone results in a non-monophyletic Culicinae, as below:
-![nt3_phylogenies](https://github.com/jsoghigian/culicitree/blob/main/comphet/images/two_nt3s.png?raw=true)
+![nt3_phylogenies](https://github.com/jsoghigian/culicitree/blob/main/comphet/images/two_nt3s.png?raw=true) 
 The phylogeny on the left was based on nucleotide position 3 from Dataset A, while the phylogeny on the right was based on nucleotide position 3 from Dataset C. Now both topologies do have some problematic aspects, as tribes are not monophyletic. Note that this same phenomenon was observed by Pierce et al. in their analyses, where the Mansoniniini was not monophyletic as Mansonia and Coquelltidia were in separate parts of the phylogeny. This is not a problem we see with amino acids or other nucleotide positions.
 
 But why does NT3 show this topology? That's the question.
@@ -47,7 +47,7 @@ But why does NT3 show this topology? That's the question.
 ## Assessing Support for Conflicting Topologies
 There are a variety of ways to assess support for topologies that conflict. One option is to assess the difference in log-likelihood between two topologies given an alignment. This can be determined across an alignment, with differences supporting one topology or another, as below
 
-![enter image description here](https://github.com/jsoghigian/culicitree/blob/main/comphet/images/lnlexample.png?raw=true)
+![enter image description here](https://github.com/jsoghigian/culicitree/blob/main/comphet/images/lnlexample.png?raw=true) 
 That likelihood can be assesed either by site, or by partition. Estimating the likelihood can be done as below:
 ```
 iqtree3 -s gen_tran.trim.dna.phy -spp pos123.lnl.best_model.nex -z two_topos.trees -wsl -wpl -n 0 -nt 16 --prefix pos123.lnl
@@ -59,7 +59,7 @@ As we run these sort of analyses often, we've created a simple tool to merge tog
 lnleval.py file.iqtree lh.partlh
 ```
 The resulting tsv can be imported into something like R and processed and summarized. We've uploaded a file that includes these values, ntaastats.tsv. If one summarzies the support across different partition types from Dataset A, we find the following for this dataset:
-![per partition support for Culicinae](https://github.com/jsoghigian/culicitree/blob/main/comphet/images/dlnl_by_parttype.png?raw=true)
+![per partition support for Culicinae](https://github.com/jsoghigian/culicitree/blob/main/comphet/images/dlnl_by_parttype.png?raw=true) 
 The partitions supporting the NT3 topology, as opposed to the two subfamily hypothesis and a monophyletic Culicinae, are only really found at nucleotide position 3. This aligns with expectations given the topologies we recover from amino acids and other positions. But again - why?
 
 ## Inspecting Alignments
