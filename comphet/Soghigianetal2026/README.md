@@ -53,6 +53,6 @@ The resulting phylogeny is shown in panel B, above.
 We replaced the lowest GC content outgroups, *Clunio marinus* (Chironomidae), *Culicoides sonorensis* (Ceratapogonidae), and *Polypedilum vanderplanki* (Chironomidae), all of which have 3rd position GC content of 35% or less. Using the same methods described in Soghigian et  al. 2023, we used the protein sequences from *Forpomyia taiwanana* - GCA_963930915.1 (Ceratapogonidae), *Belgica antarctica* - GCA_000775305.1 (Chironomidae), and a transcriptome from a *Similium sp.* - GGBP00000000 (Simuliidae), and added these sequences to the alignments of the ingroup mosquitoes from Soghigian et al. 2023, resulting in alignments that differered in outgroup taxon only.  Again following methods in Soghigian et al. 2023, we then concatenated alignments and analyzed them together. 
 For expediency, we specified the model GTR:
 ```
-iqtree3_intel -s DatasetC_nt.fasta -spp DatasetC_nt.3.parts -pre s2026.base.nt3.gtrfo -m GTR+FO+R4 -B 1000 -nt 16
+iqtree3 -s DatasetC_nt.fasta -spp DatasetC_nt.3.parts -pre s2026.base.nt3.gtrfo -m GTR+FO+R4 -B 1000 -nt 16
 ```
 We later retrieved the same topology with ModelFinder.
