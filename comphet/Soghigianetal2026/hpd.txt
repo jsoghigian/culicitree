@@ -1,0 +1,42 @@
+node	source	taxa	label	HPD_MIN	HPD_MID	HPD_MAX	remarks	Node
+chaoboridae	fossil	Rhaetomyia necopinata	1.1	199.3	200.3	201.3		4
+chaoboridae	fossil	Rhaetomyia herrigi	1.1	174.1	178.4	182.7		4
+chaoboridae	fossil	Chaoborites argillaceus	1.1	168.3	169.3	170.3		4
+chaoboridae	fossil	Hypsocorethra jurassica	1.1	157.3	160.4	163.5		4
+chaoboridae	fossil	Mesocorethra levis	1.1	139.8	145.95	152.1		4
+chaoboridae	fossil	Asiochaoborus tenuous	1.1	113	119	125		4
+chaoboridae	fossil	Chaoburmus breviusculus	1.1	93.5	96.55	99.6		4
+chaoboridae	fossil	Corethra exita	1.1	46.2	48.25	50.3		4
+chaoboridae	S2023	S2023 chaoboridae + culicidae stem	1.3	187.766	218.684	249.602		
+chaoboridae	L2021	L2021 Dixella + Culicidae stem	1.5	189.457	226.5985	263.74		
+chaoboridae	P2025	P2025 chaoboridae + culicidae stem	1.7	102.249	106.5555	110.862		
+Culicidae	fossil	Burmaculex edwardsi	2.1	89	99	109		5
+Culicidae	S2023	S2023 culicidae MRCA	2.3	149.436	183.4595	217.48		
+Culicidae	L2021	L2021 culicidae stem	2.5	187.339	202.4515	217.564		
+Culicidae	P2025	P2025 culicidae MRCA	2.7	66.238	71.805	77.37		
+Anophelinae	fossil	Anopheles (Nyssorhynchus) dominicanus	3.1	33.9	37.2	40.4		
+Anophelinae	S2023	S2023 anophelinae MRCA	3.3	117.724	146.3	174.84		
+Anophelinae	L2021	L2021 anophelinae MRCA	3.5	100.681	140.1275	179.574		
+Anophelinae	P2025	P2025 anophelinae MRCA	3.7	33.425	35.578	37.731		
+Culicinae	fossil	Cretosabethes primaevus	5.1	89	99	109		6
+Culicinae	S2023	S2023 culicinae MRCA	4.3	110.221	137.171	164.121		
+Culicinae	L2021	L2021 culicinae MRCA	4.5	104.427	145.923	187.419		
+Culicinae	P2025	P2025 culicinae MRCA (also culicidae MRCA)	4.7	66.238	71.805	77.37		
+Sabethini	fossil	Cretosabethes primaevus	5.1	89	99	109		7
+Sabethini	S2023	S2023 sabethini stem (with toxorhynchitini)	5.3	71.764	89.0185	106.273		
+Sabethini	L2021	L2021 sabethini stem (with toxorhynchtini and aedeomyiini)	5.5	74.232	126.4865	178.741		
+Sabethini	P2025	P2025 sabethini stem (anophelinae + culicini + aedini etc)	5.7	51.237	54.2675	57.298		
+Culisetini	fossil	Culiseta gedanica	6.1	33.9	44.95	56		
+Culisetini	S2023	S2023 Culisetini stem	6.3	68.3477	85.31335	102.279	only 3 species sampled in P2025. If using equivalent Culiseta node for both trees, hpds [9.9, 19.041]	
+Culisetini	P2025	P2025 Culisetini stem	6.5	48.508	51.698	54.888	only 3 species sampled in P2025. If using equivalent Culiseta node for both trees, hpds [6.405, 7.84]	
+Culicini	fossil	Culex damnatorum	7.1	33.9	44.95	56		8,9
+Culicini	fossil	Culex (Culex) erikae	7.3	33.9	37.15	40.4		8,9
+Culicini	S2023	S2023 culicini MRCA	7.5	63.8565	79.69645	95.5364		
+Culicini	L2021	L2021 culisini MRCA	7.7	35.191	40.0575	44.924		
+Culicini	P2025	P2025 culicini MRCA	7.9	22.549	24.303	26.057		
+Aedini	fossil	Eoaedes damzeni	9.1	33.9	44.95	56		10,11,12
+Aedini	fossil	Aetheapnomyia hoffeinsorum	9.2	33.9	35.85	37.8		10,11,12
+Aedini	fossil	Aedes (Ochlerotatus) serafini	9.3	33.9	44.95	56		10,11,12
+Aedini	S2023	S2023 MRCA aedini clade A + B	9.5	52.0234	64.7172	77.411		
+Aedini	L2021	L2021 MRCA aedini clade A + B	9.7	17.819	49.325	80.831		
+Aedini	P2025	P2025 MRCA aedini clade A + B	9.9	30.66	32.813	34.966		
