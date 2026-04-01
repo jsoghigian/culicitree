@@ -47,7 +47,10 @@ This resulted in a recoded alignment, saved here as DatasetA_recode01. This data
 ```
 iqtree3 -s DatasetA_recode01.fasta -spp DatasetA_recode01.3.parts -m GTR2+FO+R+I -nt 16 --prefix DatasetA_recodeRYas01
 ```
-The resulting phylogeny is shown in panel B, above.
+The resulting phylogeny is shown in panel B, above.  The same topology results from the below command:
+```
+iqtree3 -s DatasetA_recodeRY.fasta -spp DatasetA_recode01.3.parts -m GTR+FO+R+I -nt 16 --prefix DatasetA_recodeRY
+```
 
 #### Analyzing New Outgroups  
 We replaced the lowest GC content outgroups, *Clunio marinus* (Chironomidae), *Culicoides sonorensis* (Ceratapogonidae), and *Polypedilum vanderplanki* (Chironomidae), all of which have 3rd position GC content of 35% or less. Using the same methods described in Soghigian et  al. 2023, we used the protein sequences from *Forpomyia taiwanana* - GCA_963930915.1 (Ceratapogonidae), *Belgica antarctica* - GCA_000775305.1 (Chironomidae), and a transcriptome from a *Similium sp.* - GGBP00000000 (Simuliidae), and added these sequences to the alignments of the ingroup mosquitoes from Soghigian et al. 2023, resulting in alignments that differered in outgroup taxon only.  Again following methods in Soghigian et al. 2023, we then concatenated alignments and analyzed them together. 
