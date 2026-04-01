@@ -6,8 +6,8 @@ Here we provide the code used to generate the figures shown in Soghigian et al. 
 - hpd.txt - A tab delimited file of fossil ages and HPDs.
 - base_comp.txt - Base composition ( GC content) values for Dataset A.
 - residues_per_tax_aln.txt - Base composition (GC content) values for Dataset C.
-- DatasetA_nt.phy - The original alignment of 54 genomes and transcriptomes published in Soghigian et al. 2023. Also has an associated nt.123.parts and nt.3.parts file, which are partition files.
-- DatasetA_recodeRY.fasta and DatasetA_recode01.fasta  - The alignment of 54 genomes and transcriptomes published in Soghigian et al. 2023, but recoded following a 01/RY strategy. Also has an associated nt.123.parts and nt.3.parts file, which are partition files.
+- DatasetA_nt.phy - The original alignment of 55 genomes and transcriptomes published in Soghigian et al. 2023. Also has an associated nt.123.parts and nt.3.parts file, which are partition files.
+- DatasetA_recodeRY.fasta and DatasetA_recode01.fasta  - The alignment of 55 genomes and transcriptomes published in Soghigian et al. 2023, but recoded following a 01/RY strategy. Also has an associated nt.123.parts and nt.3.parts file, which are partition files.
 - DatasetC_net.fasta - The taxa from Dataset A but with 3 new outgroups: Forpomyia taiwanana - GCA_963930915.1 (Ceratapogonidae), Belgica antarctica - GCA_000775305.1 (Chironomidae), and a transcriptome from a Similium sp. - GGBP00000000 (Simuliidae). Also has an associated nt.123.parts and nt.3.parts file, which are partition files.
 
 ### Figure 1
