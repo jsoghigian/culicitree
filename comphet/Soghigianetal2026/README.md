@@ -39,9 +39,9 @@ iqtree3 -s DatasetA_nt.phy -spp DatasetA_nt.3.parts -pre nt3.MFP -m MFP -B 1000 
 An alternative would be to extract alignment columns, e.g. with AMAS, but because IQ-Tree is flexible one can exclude positions they do not wish to analyze, e.g. nucleotide positions 1 and 2, which is what we did here.
 The resulting topology is shown above in panel A.
 #### Recoding NT3
-We recoded the alignment following an RY or 01 (reflecting transition/transversion) approach. Because neither RY nor 01 approaches yielded differences in topology, but because from a theoretical level analyzing recoded data as binary data has some justification (see IQTree help discussions on the topic), we present those codes here.  We used  [PhyKit](https://github.com/jlsteenwyk/phykit) for recoding:
+To address compositional heterogeneity at third codon position, we use an RY recoding scheme, wherein purines (A and G) are recoded to R and pyrimidines (T and C) are recoded to Y. This strategy can also be done in a binary fashion, in which R is 0 and Y is 1. Because neither RY nor 01 approaches yielded differences in topology, but because from a theoretical level analyzing recoded data as binary data has some justification (see IQTree help discussions on the topic), we present those codes here.  We used  [PhyKit](https://github.com/jlsteenwyk/phykit) for recoding:
 ```
-phykit alignment_recoding DatasetA.fasta RY-recoding.txt
+phykit alignment_recoding DatasetA.fasta RY01-recoding.txt
 ```
 This resulted in a recoded alignment, saved here as DatasetA_recode01. This dataset was then analyzed with IQTree:
 ```
