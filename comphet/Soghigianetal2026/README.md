@@ -11,12 +11,12 @@ Here we provide the code used to generate the figures shown in Soghigian et al. 
 - DatasetC_net.fasta - The taxa from Dataset A but with 3 new outgroups: Forpomyia taiwanana - GCA_963930915.1 (Ceratapogonidae), Belgica antarctica - GCA_000775305.1 (Chironomidae), and a transcriptome from a Similium sp. - GGBP00000000 (Simuliidae). Also has an associated nt.123.parts and nt.3.parts file, which are partition files.
 
 ### Figure 1
-![CulicidaePhylogeny](https://github.com/jsoghigian/culicitree/blob/main/comphet/images/fig1.png?raw=true)  
+![CulicidaePhylogeny](https://github.com/jsoghigian/culicitree/blob/main/comphet/Soghigianetal2026/fig1.png?raw=true)  
 Figure 1 is based on previously published phylogenies and other data. The phylogeny, which we have uploaded here as aa_ml_subgenus.tre, is from [Soghigian et al. 2023](https://doi.org/10.1038/s41467-023-41764-y). This phylogeny was visualized in [FigTree](https://tree.bio.ed.ac.uk/software/figtree/), then modified in Illustrator to include unsampled lineages and to mark morphological characters. The other panel of this figure was generated in R. The scripts to do so are included in fossil_age_plot.R.
 
 
 ### Figure 2
-![new OGS resolve NT3](https://github.com/jsoghigian/culicitree/blob/main/comphet/images/multi_panel_new_og.png?raw=true)  
+![new OGS resolve NT3](https://github.com/jsoghigian/culicitree/blob/main/comphet/Soghigianetal2026/multi_panel_new_og.png?raw=true)  
 We noticed substantial compositional heterogeneity in the form of GC content variation (Panel A), which we felt manifested as long branch attraction among ingroup species with low GC content and outgroup taxa with low GC content (Panel B) and a discrepancy between amino acids/nt1 and 2 and nucleotide position 3. Either recoding, or using different outgroups, resolved this discrepancy.  
 #### GC Content
 To visualize GC content, we used a boxplot.  We generated GC content values using [PhyKit](https://github.com/jlsteenwyk/phykit) for alignments with the following command:
