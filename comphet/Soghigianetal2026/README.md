@@ -11,13 +11,11 @@ Here we provide the code used to generate the figures shown in Soghigian et al. 
 - DatasetC_net.fasta - The taxa from Dataset A but with 3 new outgroups: Forpomyia taiwanana - GCA_963930915.1 (Ceratapogonidae), Belgica antarctica - GCA_000775305.1 (Chironomidae), and a transcriptome from a Similium sp. - GGBP00000000 (Simuliidae). Also has an associated nt.123.parts and nt.3.parts file, which are partition files.
 
 ### Figure 1
-![CulicidaePhylogeny](https://github.com/jsoghigian/culicitree/blob/main/comphet/Soghigianetal2026/fig1.png?raw=true)  
 Figure 1 is based on previously published phylogenies and other data. The phylogeny, which we have uploaded here as aa_ml_subgenus.tre, is from [Soghigian et al. 2023](https://doi.org/10.1038/s41467-023-41764-y). This phylogeny was visualized in [FigTree](https://tree.bio.ed.ac.uk/software/figtree/), then modified in Illustrator to include unsampled lineages and to mark morphological characters. The other panel of this figure was generated in R. The scripts to do so are included in fossil_age_plot.R.
 
 
 ### Figure 2
-![new OGS resolve NT3](https://github.com/jsoghigian/culicitree/blob/main/comphet/Soghigianetal2026/multi_panel_new_og.png?raw=true)  
-We noticed substantial compositional heterogeneity in the form of GC content variation (Panel A), which we felt manifested as long branch attraction among ingroup species with low GC content and outgroup taxa with low GC content (Panel B) and a discrepancy between amino acids/nt1 and 2 and nucleotide position 3. Either recoding, or using different outgroups, resolved this discrepancy.  
+We noticed substantial compositional heterogeneity in the form of GC content variation, which we felt manifested as long branch attraction among ingroup species with low GC content and outgroup taxa with low GC content (Panel B) and a discrepancy between amino acids/nt1 and 2 and nucleotide position 3. Either recoding, or using different outgroups, resolved this discrepancy.  We discuss how we made each panel, below.
 #### GC Content
 To visualize GC content, we used a boxplot.  We generated GC content values using [PhyKit](https://github.com/jlsteenwyk/phykit) for alignments with the following command:
 ```
@@ -32,7 +30,7 @@ done
 ```
 The resulting GC values were analyzed in R, as described in the R script gc_content_boxplot.r . 
 #### Phylogenetic estimation of NT3 topology
-Dataset A was used to approximate Pierce et al. This dataset contains 54 genomes and transcriptomes and was previously published in Soghigian et al., but the NT3 position along was not analyzed. As such, we show the code for that analysis here:
+Dataset A was used to approximate Pierce et al. This dataset contains 54 genomes and transcriptomes and was previously published in Soghigian et al., but the NT3 position alone was not analyzed in that mansucript for reasons described therein. However, we decided to evaluate if we found a similar topology to Pierce et al., which we show in Figure 2. As such, we show the code for that analysis here:
 ```
 iqtree3 -s DatasetA_nt.phy -spp DatasetA_nt.3.parts -pre nt3.MFP -m MFP -B 1000 -nt 16
 ```
@@ -53,7 +51,7 @@ iqtree3 -s DatasetA_recodeRY.fasta -spp DatasetA_recode01.3.parts -m GTR+FO+R+I 
 ```
 
 #### Analyzing New Outgroups  
-We replaced the lowest GC content outgroups, *Clunio marinus* (Chironomidae), *Culicoides sonorensis* (Ceratapogonidae), and *Polypedilum vanderplanki* (Chironomidae), all of which have 3rd position GC content of 35% or less. Using the same methods described in Soghigian et  al. 2023, we used the protein sequences from *Forpomyia taiwanana* - GCA_963930915.1 (Ceratapogonidae), *Belgica antarctica* - GCA_000775305.1 (Chironomidae), and a transcriptome from a *Similium sp.* - GGBP00000000 (Simuliidae), and added these sequences to the alignments of the ingroup mosquitoes from Soghigian et al. 2023, resulting in alignments that differered in outgroup taxon only.  Again following methods in Soghigian et al. 2023, we then concatenated alignments and analyzed them together. 
+We replaced the lowest GC content outgroups, *Clunio marinus* (Chironomidae), *Culicoides sonorensis* (Ceratapogonidae), and *Polypedilum vanderplanki* (Chironomidae), all of which have 3rd position GC content of 35% or less. Using the same methods described in Soghigian et  al. 2023 (available at the repository [here](https://github.com/jsoghigian/culicitree/tree/main/Soghigian_etal_2023)), we used the protein sequences from *Forpomyia taiwanana* - GCA_963930915.1 (Ceratapogonidae), *Belgica antarctica* - GCA_000775305.1 (Chironomidae), and a transcriptome from a *Similium sp.* - GGBP00000000 (Simuliidae), and added these sequences to the alignments of the ingroup mosquitoes from Soghigian et al. 2023 using the same alignment scripts and methods in that manuscript, resulting in alignments that contained the same ingroups but a different set of outgroups - those sister to mosquitoes (Chaoboridae) but with outgroups with higher GC content.  Again following methods in Soghigian et al. 2023, we then concatenated alignments and analyzed them together. 
 For expediency, we specified the model GTR:
 ```
 iqtree3 -s DatasetC_nt.fasta -spp DatasetC_nt.3.parts -pre s2026.base.nt3.gtrfo -m GTR+FO+R4 -B 1000 -nt 16
